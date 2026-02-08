@@ -54,9 +54,7 @@ def ml_predict(skill, interest, education):
     interest = interest.lower()
     education = education.lower()
 
-     # =================================================
-    # 🎓 B.TECH
-    # =================================================
+    #  B.TECH
     if education in ["b.tech", "btech", "engineering"]:
 
         if "coding" in skill or "programming" in skill:
@@ -74,9 +72,7 @@ def ml_predict(skill, interest, education):
         else:
             return "Graduate Engineer Trainee (GET)"
 
-    # =================================================
-    # ⚖️ LLB
-    # =================================================
+    # LLB
     elif education in ["llb", "law"]:
 
         if "corporate" in interest:
@@ -90,10 +86,8 @@ def ml_predict(skill, interest, education):
 
         else:
             return "Legal Advisor"
-
-    # =================================================
-    # 💻 BCA
-    # =================================================
+            
+    # BCA
     elif education in ["bca"]:
 
         if "web" in skill:
@@ -107,10 +101,8 @@ def ml_predict(skill, interest, education):
 
         else:
             return "IT Support Executive"
-
-    # =================================================
-    # 📊 BBA
-    # =================================================
+            
+    # BBA
     elif education in ["bba"]:
 
         if "marketing" in interest:
@@ -125,9 +117,7 @@ def ml_predict(skill, interest, education):
         else:
             return "Management Trainee"
 
-    # =================================================
-    # 📘 BA
-    # =================================================
+    # BA
     elif education in ["ba", "b.a", "arts"]:
 
         if "teaching" in interest:
@@ -145,9 +135,7 @@ def ml_predict(skill, interest, education):
         else:
             return "Career Counselling Required"
 
-    # =================================================
-    # 🔬 B.SC
-    # =================================================
+    # B.SC
     elif education in ["b.sc", "bsc", "science"]:
 
         if "research" in interest:
@@ -162,9 +150,7 @@ def ml_predict(skill, interest, education):
         else:
             return "Higher Studies (M.Sc / PhD)"
 
-    # =================================================
-    # 🎓 MBA
-    # =================================================
+    # MBA
     elif education in ["mba"]:
 
         if "marketing" in interest:
@@ -182,9 +168,7 @@ def ml_predict(skill, interest, education):
         else:
             return "Business Consultant"
 
-    # =================================================
-    # 🤖 FALLBACK → PURE ML MODEL
-    # =================================================
+    #  PURE ML MODEL
     else:
         skills_enc = le_skills.transform([skill])[0]
         interest_enc = le_interest.transform([interest])[0]
@@ -192,5 +176,6 @@ def ml_predict(skill, interest, education):
 
         X = np.array([[skills_enc, interest_enc, education_enc]])
         pred = model.predict(X)
+
 
         return le_career.inverse_transform(pred)[0]
