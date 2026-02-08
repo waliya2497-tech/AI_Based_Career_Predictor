@@ -6,66 +6,54 @@ import numpy as np
 from backend import ml_predict
 from backend import text_predict
 
-# ---------------- PAGE CONFIG ----------------
 st.set_page_config(
     page_title="AI Career Predictor",
     page_icon="🎯",
     layout="centered"
 )
 
-#----------------DARK THEME---------------
 st.markdown("""
 <style>
-/* ---------------- PAGE BACKGROUND & TEXT ---------------- */
 body {
-    background-color: #f0f2f6 !important; /* Dark background */
-    color: #0f111a !important;            /* White text */
+    background-color: #f0f2f6 !important; 
+    color: #0f111a !important;            
 }
 
-/* ---------------- INPUT BOXES ---------------- */
 .stTextInput>div>input,
 .stTextArea>div>textarea,
 .stSelectbox>div>div>div>select {
-    background-color: #1e1e1e !important; /* Dark input background */
-    color: #ffffff !important;            /* Input text white */
+    background-color: #1e1e1e !important; 
+    color: #ffffff !important;            
     border-radius: 5px;
     padding: 5px;
 }
-
-/* ---------------- BUTTONS ---------------- */
 .stButton>button {
-    background-color: #1f1f1f !important; /* Dark button */
-    color: #ffffff !important;            /* Button text white */
+    background-color: #1f1f1f !important; 
+    color: #ffffff !important;           
     border-radius: 8px;
     height: 3em;
     width: 100%;
     font-weight: bold;
 }
-
-/* ---------------- RADIO / SELECT / HORIZONTAL OPTIONS ---------------- */
 .stRadio>div,
 .stSelectbox>div {
     color: #ffffff !important;
 }
 
-/* ---------------- DIVIDER / HR ---------------- */
 hr {
     border-top: 1px solid #333333;
 }
 
-/* ---------------- FOOTER / SMALL TEXT ---------------- */
 div.stMarkdown p, div.stMarkdown span {
     color: #AAAAAA !important;
 }
 
-/* ---------------- HOVER EFFECT FOR BUTTON ---------------- */
 .stButton>button:hover {
     background-color: #333333 !important;
 }
 </style>
 """, unsafe_allow_html=True)
 
-# ---------------- LOAD MODEL FILES ----------------
 @st.cache_resource
 def load_models():
     model = pickle.load(open("model.pkl", "rb"))
@@ -77,26 +65,23 @@ def load_models():
 
 model, le_skills, le_interest, le_education, le_career = load_models()
 
-# ---------------- TITLE ----------------
 st.markdown("<h1 style='text-align:center;'>🎓 AI Based Career Predictor</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align:center;'>Predict your career using AI & skills analysis</p>", unsafe_allow_html=True)
 st.divider()
 
-# ---------------- MODE SELECTION ----------------
 mode = st.radio(
     "Select Prediction Mode",
     ("ML Based", "Free Text")
 )
 
-# ================= ML BASED =================
 if mode == "ML Based":
 
     st.subheader("🤖 ML Based Prediction")
 
-    skills = st.text_input("Enter Skills (comma separated)")
-    interest = st.text_input("Enter Interest")
+    skills = st.text_input("🛠️Enter Skills (comma separated)")
+    interest = st.text_input("💡Enter Interest")
     education = st.selectbox(
-        "Education Level",
+        "🎓Education Level",
         ["B.Tech", "MBA", "LLB", "B.Sc", "BA", "BCA", "BBA"
         ""]
     )
@@ -137,8 +122,6 @@ if mode == "ML Based":
     </div>
     """, unsafe_allow_html=True)
 
-
-# ================= FREE TEXT =================
 elif mode == "Free Text":
 
     st.subheader("✍️ Free Text Prediction")
@@ -190,7 +173,6 @@ elif mode == "Free Text":
     </div>
     """, unsafe_allow_html=True)
     
-# ---------------- FOOTER ----------------
 st.divider()
 st.markdown("""
 <hr>
@@ -199,4 +181,5 @@ st.markdown("""
 Final Year Project | AKTU CSE <br>
 Built with ❤️ using Streamlit & Machine Learning
 </p>
+
 """, unsafe_allow_html=True)
