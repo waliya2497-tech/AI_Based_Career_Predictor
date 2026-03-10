@@ -86,7 +86,7 @@ if mode == "ML Based":
         ""]
     )
 
-    if st.button("🚀 Predict Career"):
+    if st.button(" Predict Career"):
        with st.spinner("Analyzing skills & interests..."):
         time.sleep(1.5)
         result = ml_predict (skills, interest, education)
@@ -124,12 +124,12 @@ if mode == "ML Based":
 
 elif mode == "Free Text":
 
-    st.subheader("✍️ Free Text Prediction")
+    st.subheader(" Free Text Prediction")
 
     free_skills = st.text_area("🛠️ Describe your Skills")
     free_interests = st.text_area("🎯 Describe your Interests")
      
-    if st.button("🚀 Predict Career"):
+    if st.button(" Predict Career"):
        text = free_skills + " " + free_interests
 
        with st.spinner("Understanding your profile..."):
@@ -177,9 +177,10 @@ st.divider()
 st.markdown("""
 <hr>
 <p style="text-align:center; font-size:14px; color:#AAAAAA;">
-🚀 AI Based Career Predictor <br>
+AI Based Career Predictor <br>
 Final Year Project | AKTU CSE <br>
-Built with ❤️ using Streamlit & Machine Learning
+
 </p>
 
 """, unsafe_allow_html=True)
+
